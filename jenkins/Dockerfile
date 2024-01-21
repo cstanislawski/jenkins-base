@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.426.2
+FROM jenkins/jenkins:2.426.2-lts
 
 # `ARG` is only available during build time
 # `ENV` is available during run time
