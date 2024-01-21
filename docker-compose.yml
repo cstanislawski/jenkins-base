@@ -1,12 +1,14 @@
 services:
   jenkins:
+    container_name: jenkins
     build:
       context: ./jenkins/
-      dockerfile: ./jenkins/Dockerfile
+      dockerfile: ./Dockerfile
     # ports:
     #   - 8080:8080
     #   - 50000:50000
   nginx:
+    container_name: nginx
     image: nginx:1.25.3
     ports:
       - 80:80
@@ -15,6 +17,7 @@ services:
     depends_on:
       - jenkins
   cadvisor:
+    container_name: cadvisor
     image: gcr.io/cadvisor/cadvisor:v0.47.2
     privileged: true
     # ports:
