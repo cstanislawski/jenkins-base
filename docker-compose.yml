@@ -4,9 +4,8 @@ services:
     build:
       context: ./jenkins/
       dockerfile: ./Dockerfile
-    # ports:
-    #   - 8080:8080
-    #   - 50000:50000
+    ports:
+      - 50000:50000 # Jenkins agent port
     environment:
       - "PROMETHEUS_ENDPOINT=/jenkins_metrics/"
   nginx:
@@ -22,8 +21,6 @@ services:
     container_name: cadvisor
     image: gcr.io/cadvisor/cadvisor:v0.47.2
     privileged: true
-    # ports:
-    #   - 8081:8080
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run:rw
@@ -36,10 +33,6 @@ services:
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus_data:/prometheus
-    environment: # data retention of 15d
-      - "TZ=Europe/Warsaw"
-      - "PROMETHEUS_GLOBAL_SCRAPE_INTERVAL=15s"
-
 
 volumes:
   prometheus_data: {}
