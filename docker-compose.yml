@@ -7,6 +7,8 @@ services:
     # ports:
     #   - 8080:8080
     #   - 50000:50000
+    environment:
+      - "PROMETHEUS_ENDPOINT=/jenkins_metrics/"
   nginx:
     container_name: nginx
     image: nginx:1.25.3
@@ -28,3 +30,16 @@ services:
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:v2.49.1
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    environment: # data retention of 15d
+      - "TZ=Europe/Warsaw"
+      - "PROMETHEUS_GLOBAL_SCRAPE_INTERVAL=15s"
+
+
+volumes:
+  prometheus_data: {}
