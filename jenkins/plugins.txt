@@ -1,2 +1,4 @@
 configuration-as-code
 prometheus
+theme-manager
+dark-theme

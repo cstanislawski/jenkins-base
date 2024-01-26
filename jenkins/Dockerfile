@@ -7,9 +7,6 @@ ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 ENV JENKINS_HOME /var/jenkins_home
 ENV CASC_JENKINS_CONFIG /usr/share/jenkins/ref/casc.yml
 
-# install casc
-COPY ./casc.yml ${CASC_JENKINS_CONFIG}
-
 # install plugins
 COPY ./plugins.txt /usr/share/jenkins/ref/plugins.txt
 
@@ -18,3 +15,6 @@ RUN jenkins-plugin-cli \
   --view-security-warnings \
   --clean-download-directory \
   --list
+
+# copy casc
+COPY ./casc.yml ${CASC_JENKINS_CONFIG}

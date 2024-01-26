@@ -14,3 +14,7 @@ unclassified:
     fetchTestResults: true
     processingDisabledBuilds: countFailedBuild
     useAuthenticatedEndpoint: false
+appearance:
+  themeManager:
+    disableUserThemes: true
+    theme: "darkSystem"
