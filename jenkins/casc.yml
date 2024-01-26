@@ -14,7 +14,9 @@ unclassified:
     fetchTestResults: true
     processingDisabledBuilds: countFailedBuild
     useAuthenticatedEndpoint: false
+  location:
+    url: http://localhost/
 appearance:
   themeManager:
     disableUserThemes: true
-    theme: "darkSystem"
+    theme: "dark"
