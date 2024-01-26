@@ -1,0 +1,31 @@
+# global config
+global:
+  scrape_interval:     15s
+  evaluation_interval: 15s
+  scrape_timeout: 10s
+
+rule_files:
+scrape_configs:
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
+        labels:
+          group: 'prometheus'
+  - job_name: 'jenkins'
+    metrics_path: '/jenkins_metrics/'
+    static_configs:
+      - targets: ['jenkins:8080']
+        labels:
+          group: 'jenkins'
+  - job_name: 'node-exporter'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['node-exporter:9100']
+        labels:
+          group: 'node'
+  - job_name: 'cadvisor'
+    metrics_path: '/metrics'
+    static_configs:
+      - targets: ['cadvisor:8080']
+        labels:
+          group: 'cadvisor'

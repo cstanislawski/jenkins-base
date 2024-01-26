@@ -1,2 +1,16 @@
 jenkins:
   authorizationStrategy: unsecured
+unclassified:
+  prometheusConfiguration:
+    path: "jenkins_metrics"
+    collectingMetricsPeriodInSeconds: 15
+    jobAttributeName: "job"
+    defaultNamespace: "default"
+    countAbortedBuilds: true
+    countFailedBuilds: true
+    countNotBuiltBuilds: true
+    countSuccessfulBuilds: true
+    countUnstableBuilds: true
+    fetchTestResults: true
+    processingDisabledBuilds: countFailedBuild
+    useAuthenticatedEndpoint: false
